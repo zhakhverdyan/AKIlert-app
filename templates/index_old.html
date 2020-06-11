@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+<head>
+    <title>AKIlert demonstration</title>
+    <style type="text/css">
+        .h1 {color:rgb(255, 255, 255);}
+        .h2 {color: rgb(0,0,0)}
+        .header{
+            text-align: center;
+            background-color: rgb(181, 145, 240);
+            color:rgb(255, 255, 255);
+            height: 132px;
+            line-height: 132px;
+        }
+        .chart{
+            margin-top: 30px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+ 
+  <div class="header">
+      <img src="{{url_for('static', filename='PHM_Natl-Kidney-Mnth_header.jpg')}}" align="left" width="250"/>
+      <h1>
+          AKIlert: timely prediction of acute kidney injury in ICU patients
+      </h1>
+  </div>
+  
+
+
+<body style="background: rgb(256, 256, 256);">
+ <div class="features">
+	<h1>Please select a patient</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+     <label for="patient">Patient number</label>
+       <select id="patient" name="patient">
+        <option value="Patient 1">1</option>
+        <option value="Patient 2">2</option>
+        <option value="Patient 3">3</option>
+        <option value="Patient 4">4</option>
+        <option value="Patient 5">5</option>
+        <option value="Patient 6">6</option>
+        <option value="Patient 7">7</option>
+        <option value="Patient 8">8</option>
+        <option value="Patient 9">9</option>
+        <option value="Patient 10">10</option>
+       </select>
+
+    <form action="{{ url_for('predict')}}"method="post">
+      <input type="number" name="WBC x 1000" placeholder="WBC x 1000" required="required" />
+      <input type="number" name="bicarbonate" placeholder="bicarbonate" required="required" />
+      <input type="number" name="chloride" placeholder="chloride" required="required" />
+      <input type="number" name="creatinine" placeholder="creatinine" required="required" />
+      <input type="number" name="platelets x 1000" placeholder="platelets x 1000" required="required" />
+      <input type="number" name="potassium" placeholder="potassium" required="required" />
+      <input type="number" name="sodium" placeholder="sodium" required="required" />
+      <input type="number" name="age" placeholder="age" required="required" />
+      <input type="number" name="unitvisitnumber" placeholder="unitvisitnumber" required="required" />
+
+      <label for="sex">sex</label>
+       <select id="sex" name="sex">
+        <option value="Female">Female</option>
+        <option value="Male">Male</option>
+       </select>
+
+       <label for="ethnicity">ethnicity</label>
+       <select id="ethnicity" name="ethnicity">
+        <option value="African American">African American</option>
+        <option value="Asian">Asian</option>
+        <option value="Caucasian">Caucasian</option>
+        <option value="Hispanic">Hispanic</option>
+        <option value="Native American">Native American</option>
+        <option value="Other/Unknown">Other/Unknown</option>
+       </select>
+
+       <label for="unittype">unittype</label>
+       <select id="unittype" name="unittype">
+        <option value="CCU-CTICU">CCU-CTICU</option>
+        <option value="CTICU">CTICU</option>
+        <option value="Med-Surg ICU">Med-Surg ICU</option>
+        <option value="MICU">MICU</option>
+        <option value="Neuro ICU">Neuro ICU</option>
+        <option value="SICU">Other/Unknown</option>
+       </select>
+
+       <label for="unitadmitsource">unitadmitsource</label>
+       <select id="unitadmitsource" name="unitadmitsource">
+        <option value="Direct Admit">Direct Admit</option>
+        <option value="Emergency Department">Emergency Department</option>
+        <option value="Floor">Floor</option>
+        <option value="ICU to SDU">ICU to SDU</option>
+        <option value="Operating Room">Operating Room</option>
+        <option value="Other Hospital">Other Hospital</option>
+        <option value="Other ICU">Other ICU</option>
+        <option value="Recovery Room">Recovery Room</option>
+        <option value="Step-Down Unit (SDU)">Step-Down Unit (SDU)</option>
+       </select>
+
+      <button type="submit" class="btn btn-primary btn-block btn-large">Predict patient's AKI risk</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+
+
+</body>
+</html>
