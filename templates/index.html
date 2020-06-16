@@ -31,17 +31,17 @@
   <h2>Please select a patient</h2>
       <div id="form" class="form"><br>
         <form action="/" method="post">
-            <select name="patient">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
-              <option value="10">10</option>
+            <select title=patient name="patient" class="form-control">
+              <option value="1" {% if patient == "1" %} selected {% endif %}>Patient 1</option>
+              <option value="2" {% if patient == "2" %} selected {% endif %}>Patient 2</option>
+              <option value="3" {% if patient == "3" %} selected {% endif %}>Patient 3</option>
+              <option value="4" {% if patient == "4" %} selected {% endif %}>Patient 4</option>
+              <option value="5" {% if patient == "5" %} selected {% endif %}>Patient 5</option>
+              <option value="6" {% if patient == "6" %} selected {% endif %}>Patient 6</option>
+              <option value="7" {% if patient == "7" %} selected {% endif %}>Patient 7</option>
+              <option value="8" {% if patient == "8" %} selected {% endif %}>Patient 8</option>
+              <option value="9" {% if patient == "9" %} selected {% endif %}>Patient 9</option>
+              <option value="10" {% if patient == "10" %} selected {% endif %}>Patient 10</option>
             </select>
          <input type="submit" value="Predict patient's AKI risk">
       </form>

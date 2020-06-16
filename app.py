@@ -16,7 +16,8 @@ def get_prediction(num):
     final_features = df.iloc[num-1].values.reshape(1,-1)
     prediction = np.squeeze(model.predict_proba(final_features))
     output = round(prediction[1], 3)
-    return output
+    adjusted_prob = output*0.5/0.03
+    return round(adjusted_prob, 2)
 
 def plot_figure(num):
     fig = go.Figure()
@@ -44,7 +45,9 @@ def predict():
         print('posted')
         num=int(request.form.get("patient"))
         graphJSON=plot_figure(num)
-        return render_template('index.html', prediction_text='Patient risk is {}'.format(get_prediction(num)), graphJSON=graphJSON)
+        patient = request.form.get('patient', '')
+        print(patient)
+        return render_template('index.html', patient = patient, prediction_text='Patient risk is {}'.format(get_prediction(num)), graphJSON=graphJSON)
     else:
         return render_template('index.html')
 
