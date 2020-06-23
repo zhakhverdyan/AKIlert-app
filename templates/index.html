@@ -1,6 +1,8 @@
 <!doctype html>
 <html>
 <head>
+   <!-- <script src="https://cdn.plot.ly/plotly-latest.min.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script> -->
     <title>AKIlert demonstration</title>
     <style type="text/css">
         .h1 {color:rgb(255, 255, 255);}
@@ -40,15 +42,11 @@
               <option value="6" {% if patient == "6" %} selected {% endif %}>Patient 6</option>
               <option value="7" {% if patient == "7" %} selected {% endif %}>Patient 7</option>
               <option value="8" {% if patient == "8" %} selected {% endif %}>Patient 8</option>
-              <option value="9" {% if patient == "9" %} selected {% endif %}>Patient 9</option>
-              <option value="10" {% if patient == "10" %} selected {% endif %}>Patient 10</option>
             </select>
-         <input type="submit" value="Predict patient's AKI risk">
+         <input type="submit" value="Plot patient's kidney injury risk profile">
       </form>
 
    <br>
-   <br>
-   {{ prediction_text }}
 
  </div>
 </p>
@@ -64,10 +62,8 @@
 <script src="https://cdn.plot.ly/plotly-latest.min.js" charset="utf-8"></script>
 
 <script type="text/javascript">
-     
     var graphs = {{graphJSON | safe}};
-    
-    Plotly.plot('chart',graphs,{});        
+    Plotly.plot('chart',graphs,{}) ;      
 
 </script>
 
