@@ -31,17 +31,22 @@
 
 <body style="background: rgb(256, 256, 256);">
     <h2>Summary</h2>
-    Acute kidney injury (AKI) is a sudden failure of kidney function. It is associated with poor patient outcomes and a 
-    substantial economic burden. My project addresses the need for a timely alert system, which may help prevent avoidable 
-    cases and mitigate the damage of some instances. To accomplish this, I have developed a machine learning model to predict 
-    AKI onset 12-36 h in advance. To learn more about the project, please see the 
-    <a href="https://github.com/zhakhverdyan/eICU_AKIlert">GitHub</a> repo and 
-    <a href="https://docs.google.com/presentation/d/1yu-OwJJLWtCPg1jeSClWu2mdHFdyMTq6Dv6G9M1w348/edit?usp=sharing">slide</a> deck.
-    Please select a patient from the drop-down menu and click "Submit." The resulting plot displays the probability of a patient 
+    <ul>
+        <li>Acute kidney injury (AKI) is a sudden failure of kidney function. </li>
+        <li>It is associated with poor patient outcomes and a substantial economic burden.</li>
+        <li>My project addresses the need for a timely alert system, which may help prevent or mitigate kidney injury.</li>
+        <li>To accomplish this, I have developed a machine learning model to predict AKI onset 12-36 h in advance. </li>
+        <li>To learn more about the project, please see the
+            <a href="https://github.com/zhakhverdyan/eICU_AKIlert">GitHub</a> repo and the 
+            <a href="https://docs.google.com/presentation/d/1yu-OwJJLWtCPg1jeSClWu2mdHFdyMTq6Dv6G9M1w348/edit?usp=sharing">slide</a> deck.
+        </li>
+      </ul>
+    
+    <br>Please select a patient from the drop-down menu and click "Submit." The resulting plot displays the probability of a patient 
     developing AKI in the next 12-36h at each time point. Additionally, the level of Creatinine, a significant indicator for AKI, 
-    is plotted. With a normalized probability threshold of 0.5, the model catches half of the positive cases and produces one 
-    correct identification for every three positive predictions. Pateints 1-4 have an AKI episode (right after the graphed timeframe), 
-    while pateints 5-8 do not.
+    is plotted. At probability threshold of 0.5, the model catches half of the positive cases and produces one 
+    correct identification for every three positive predictions. 
+    <br> Pateints 1-4 have an AKI episode (right after the graphed timeframe), while pateints 5-8 do not.
 
   <!--<h2>Please select a patient</h2>-->
       <div id="form" class="form"><br>

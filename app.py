@@ -33,20 +33,28 @@ def plot_figure(num, df_data):
         x=df['Lab measurement day'].values,
         y=df['Normalized score'].values,
         name='Probability',
-        mode='lines'),
+        mode='lines+markers'),
         secondary_y=False)
 
 
     fig.add_trace(
-        go.Scatter(x=df['Lab measurement day'], y=df['creatinine'], name="Creatinine"),
+        go.Scatter(x=df['Lab measurement day'], y=df['creatinine'], name="Creatinine", mode='lines+markers'),
         secondary_y=True)
 
+    fig.add_trace(
+        go.Scatter(x=df['Lab measurement day'], y=[0.5]*len(df['Lab measurement day']), name="Threshold", fill="tozeroy", mode='lines',
+        line_color='lightgrey'),
+        secondary_y=False)
+        
+
     fig.update_layout(
-        title = 'Probability of acute kidney injury in the next 12-36h',
+        title = 'Probability of acute kidney injury in the next 12-36h and creatinine levels',
         xaxis_title="Days in relation to ICU admission")
 
-    fig.update_yaxes(title_text="Normalized probability",range=[0,1], secondary_y=False)
+    fig.update_yaxes(title_text="Probability",range=[0,1], secondary_y=False)
     fig.update_yaxes(title_text="Creatinine (mg/dL)", secondary_y=True)
+    fig.update_xaxes(range=[df['Lab measurement day'].min(), df['Lab measurement day'].max()])
+
     graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
     return graphJSON
 
